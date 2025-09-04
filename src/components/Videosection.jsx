@@ -9,10 +9,11 @@ gsap.registerPlugin(ScrollTrigger);
 const Videosection = () => {
   const videoref = useRef(null);
   const containerRef = useRef(null);
+  const overlayRef = useRef(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
+
   useGSAP(() => {
-    // Only set up the animation if the video is loaded
     if (!videoLoaded) return;
 
     // Set initial state
@@ -23,18 +24,31 @@ const Videosection = () => {
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top top',
-        end: '+=200%',
-        scrub: true,
+        end: '+=400%', // Increased scroll distance for smoother animation
+        scrub: 1.5, // Smoother scrubbing with higher value
         pin: true,
-        markers: true // helpful for debugging, remove in production
+        anticipatePin: 1, // Helps prevent jerky pinning
+      
       }
     });
 
     // Animate the video's currentTime based on scroll
     tl.to(videoref.current, {
-      currentTime: videoref.current.duration ,duration:3,
-      ease: 'none'
-    });
+      currentTime: videoref.current.duration,
+      ease: "none" // Linear easing for smooth scrubbing
+    }, 0);
+
+    // Add a subtle zoom effect for depth
+    tl.to(videoref.current, {
+      scale: 1.1,
+      ease: "sine.out"
+    }, 0);
+
+    // Fade out overlay as video plays
+    tl.to(overlayRef.current, {
+      opacity: 0,
+      ease: "power1.out"
+    }, 0);
 
   }, [videoLoaded]);
 
@@ -43,21 +57,22 @@ const Videosection = () => {
   };
 
   return (
-    <div ref={containerRef} className='h-screen w-full overflow-hidden bg-gray-950 layout opacity-0'>
+    <div ref={containerRef} className='relative h-screen w-full overflow-hidden  layout opacity-0'>
+  
+      
       <video 
         ref={videoref}
-        className='h-full w-full object-cover'
-        src="./video/Urban_Rooftop_Boombox_Video_Generation.mp4"
+        className='h-full w-full object-cover scale-105' // Initial scale for zoom effect
+        src="./video/Cyberpunk_Street_Light_Trails_Video (1) (1).mp4"
         playsInline 
         muted
+        preload="auto"
         onLoadedMetadata={handleVideoLoaded}
       ></video>
-      {!videoLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center text-white">
-          <p>Loading video...</p>
-        </div>
-      )}
-    </div>
+      
+    
+      </div>
+
   );
 };
 

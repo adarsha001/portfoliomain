@@ -13,7 +13,7 @@ Adarsha
          <Typewriter
             words={[
               ' Full-Stack Developer ',
-              ' React & GSAP Enthusiast ',
+              ' Three Fiber & GSAP Enthusiast ',
               ' AI + Web Solutions ',
               ' Voice-Activated Apps '
             ]}
