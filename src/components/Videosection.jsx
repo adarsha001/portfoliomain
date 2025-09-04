@@ -32,7 +32,7 @@ const Videosection = () => {
 
     // Animate the video's currentTime based on scroll
     tl.to(videoref.current, {
-      currentTime: videoref.current.duration || 10,
+      currentTime: videoref.current.duration ,duration:3,
       ease: 'none'
     });
 
