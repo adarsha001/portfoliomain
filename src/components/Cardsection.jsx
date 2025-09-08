@@ -6,7 +6,7 @@ import { Avater } from './Avatar'
 
 // 3D content
 const SphereWithTexture = () => {
-  const map = useTexture('./texture/ComfyUI_01219_.png')
+  const map = useTexture('./texture/background.jpeg')
 
   return (
  
