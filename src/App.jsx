@@ -8,19 +8,27 @@ import { Canvas } from '@react-three/fiber';
 
 const App = () => {
   return (
-    <div className="w-screen h-screen">
-      {/* Remove the overflow-hidden if it's clipping content */}
-      {/* <div className=''> */}
-      {/* <Canvas camera={{position:[0,0,10],fov:30}}>
-        <Cardsection/>
-      </Canvas> */}
-    
-    
-        <Typewritting/> 
-      <Videosection />
-    <Typewritting/>
+   <div className="w-screen h-screen">
+      
+      {/* Side-by-side layout section */}
+      <div className="relative flex flex-row justify-center items-center h-screen bg-gray-100">
+        {/* Left: Typewritting */}
+        <div className="w-1/2 ">
+          <Typewritting />
+        </div>
+
+        {/* Right: Cardsection */}
+        <div className="w-[70%] h-[90%] ">
+          <Cardsection />
+        </div>
       </div>
-    // </div>
+
+      {/* Video Section */}
+      <Videosection />
+
+      {/* (Optional) Another instance of Typewritting */}
+      {/* <Typewritting /> */}
+    </div>
   )
 }
 
