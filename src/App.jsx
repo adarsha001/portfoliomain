@@ -5,9 +5,11 @@ import Videosection from './components/Videosection'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Cardsection from './components/Cardsection';
 import { Canvas } from '@react-three/fiber';
+import ScrollSnapPages from './components/ScrollSnapPage';
 
 const App = () => {
   return (
+    <>
    <div className="w-screen h-screen">
       
       {/* Side-by-side layout section */}
@@ -26,9 +28,12 @@ const App = () => {
       {/* Video Section */}
       <Videosection />
 
+
       {/* (Optional) Another instance of Typewritting */}
       {/* <Typewritting /> */}
     </div>
+    
+    </>
   )
 }
 
